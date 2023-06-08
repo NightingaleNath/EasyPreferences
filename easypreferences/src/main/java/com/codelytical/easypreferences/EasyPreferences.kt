@@ -2,86 +2,152 @@ package com.codelytical.easypreferences
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
 object EasyPreferences {
+	const val TAG = "EasyPreferences"
 	private const val PREFERENCE_FILE_NAME = "easy_preferences"
 
-	// Shared Preferences instance
 	lateinit var preferences: SharedPreferences
 	lateinit var gson: Gson
 
-	// Initialize EasyPreferences with the application context
 	fun initialize(context: Context) {
 		preferences = context.getSharedPreferences(PREFERENCE_FILE_NAME, Context.MODE_PRIVATE)
 		gson = Gson()
 	}
 
-
 	fun putString(key: String, value: String) {
-		preferences.edit().putString(key, value).apply()
+		try {
+			preferences.edit().putString(key, value).apply()
+		} catch (e: Exception) {
+			Log.e(TAG, "Error putting string preference with key: $key", e)
+		}
 	}
 
 	fun getString(key: String, defaultValue: String): String {
-		return preferences.getString(key, defaultValue) ?: defaultValue
+		return try {
+			preferences.getString(key, defaultValue) ?: defaultValue
+		} catch (e: Exception) {
+			Log.e(TAG, "Error getting string preference with key: $key", e)
+			defaultValue
+		}
 	}
 
 	fun putBoolean(key: String, value: Boolean) {
-		preferences.edit().putBoolean(key, value).apply()
+		try {
+			preferences.edit().putBoolean(key, value).apply()
+		} catch (e: Exception) {
+			Log.e(TAG, "Error putting boolean preference with key: $key", e)
+		}
 	}
 
 	fun getBoolean(key: String, defaultValue: Boolean): Boolean {
-		return preferences.getBoolean(key, defaultValue)
+		return try {
+			preferences.getBoolean(key, defaultValue)
+		} catch (e: Exception) {
+			Log.e(TAG, "Error getting boolean preference with key: $key", e)
+			defaultValue
+		}
 	}
 
 	fun putInt(key: String, value: Int) {
-		preferences.edit().putInt(key, value).apply()
+		try {
+			preferences.edit().putInt(key, value).apply()
+		} catch (e: Exception) {
+			Log.e(TAG, "Error putting int preference with key: $key", e)
+		}
 	}
 
 	fun getInt(key: String, defaultValue: Int): Int {
-		return preferences.getInt(key, defaultValue)
+		return try {
+			preferences.getInt(key, defaultValue)
+		} catch (e: Exception) {
+			Log.e(TAG, "Error getting int preference with key: $key", e)
+			defaultValue
+		}
 	}
 
 	fun putFloat(key: String, value: Float) {
-		preferences.edit().putFloat(key, value).apply()
+		try {
+			preferences.edit().putFloat(key, value).apply()
+		} catch (e: Exception) {
+			Log.e(TAG, "Error putting float preference with key: $key", e)
+		}
 	}
 
 	fun getFloat(key: String, defaultValue: Float): Float {
-		return preferences.getFloat(key, defaultValue)
+		return try {
+			preferences.getFloat(key, defaultValue)
+		} catch (e: Exception) {
+			Log.e(TAG, "Error getting float preference with key: $key", e)
+			defaultValue
+		}
 	}
 
 	fun putLong(key: String, value: Long) {
-		preferences.edit().putLong(key, value).apply()
+		try {
+			preferences.edit().putLong(key, value).apply()
+		} catch (e: Exception) {
+			Log.e(TAG, "Error putting long preference with key: $key", e)
+		}
 	}
 
 	fun getLong(key: String, defaultValue: Long): Long {
-		return preferences.getLong(key, defaultValue)
+		return try {
+			preferences.getLong(key, defaultValue)
+		} catch (e: Exception) {
+			Log.e(TAG, "Error getting long preference with key: $key", e)
+			defaultValue
+		}
 	}
 
 	fun putStringSet(key: String, value: Set<String>) {
-		preferences.edit().putStringSet(key, value).apply()
+		try {
+			preferences.edit().putStringSet(key, value).apply()
+		} catch (e: Exception) {
+			Log.e(TAG, "Error putting string set preference with key: $key", e)
+		}
 	}
 
 	fun getStringSet(key: String, defaultValue: Set<String>): Set<String> {
-		return preferences.getStringSet(key, defaultValue) ?: defaultValue
+		return try {
+			preferences.getStringSet(key, defaultValue) ?: defaultValue
+		} catch (e: Exception) {
+			Log.e(TAG, "Error getting string set preference with key: $key", e)
+			defaultValue
+		}
 	}
 
 	fun <T> putObject(key: String, value: T) {
-		val jsonString = gson.toJson(value)
-		preferences.edit().putString(key, jsonString).apply()
+		try {
+			val jsonString = gson.toJson(value)
+			preferences.edit().putString(key, jsonString).apply()
+		} catch (e: Exception) {
+			Log.e(TAG, "Error putting object preference with key: $key", e)
+		}
 	}
 
 	inline fun <reified T> getObject(key: String, defaultValue: T? = null): T? {
-		val jsonString = preferences.getString(key, null)
-		return if (jsonString != null) {
-			gson.fromJson(jsonString, object : TypeToken<T>() {}.type)
-		} else {
+		return try {
+			val jsonString = preferences.getString(key, null)
+			if (jsonString != null) {
+				gson.fromJson(jsonString, object : TypeToken<T>() {}.type)
+			} else {
+				defaultValue
+			}
+		} catch (e: Exception) {
+			Log.e(TAG, "Error getting object preference with key: $key", e)
 			defaultValue
 		}
 	}
 
 	fun remove(key: String) {
-		preferences.edit().remove(key).apply()
+		try {
+			preferences.edit().remove(key).apply()
+		} catch (e: Exception) {
+			Log.e(TAG, "Error removing preference with key: $key", e)
+		}
 	}
 }
