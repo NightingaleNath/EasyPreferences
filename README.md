@@ -146,6 +146,6 @@ That's all. Looks like your all done here.
 
 ## Author
 
-Developed and Maintained by [Nathaniel Nkrumah](Author Link)
+Developed and Maintained by Nathaniel Nkrumah ([Author Link](https://github.com/NkrumahNath/EasyPreferences))
 
 
