@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Initialize EasyPreferences
-        EasyPreferences.initialize(this, "encryptionPassword")
+        EasyPreferences.initialize(this)
 
         // Example usage of putString and getString
         EasyPreferences.putString("name", "John Doe")
