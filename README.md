@@ -4,7 +4,7 @@
 
 # **EasyPreferences**
 
-["EasyPreferences" is a library that simplifies the process of handling shared preferences in Android applications. It provides an easy-to-use API for storing and retrieving key-value pairs in shared preferences, reducing the boilerplate code required for such operations]
+"EasyPreferences" is a library that simplifies the process of handling shared preferences in Android applications. It provides an easy-to-use API for storing and retrieving key-value pairs in shared preferences, reducing the boilerplate code required for such operations
 
 A simple easy to use library that helps you quickly store and retrive data from shared preferences
 
