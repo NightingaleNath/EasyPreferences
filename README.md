@@ -1,6 +1,7 @@
 # **Android Easy Preferences**
 
-[![](https://jitpack.io/v/NkrumahNath/EasyPreferences.svg)](https://jitpack.io/#NkrumahNath/EasyPreferences)
+[![](https://jitpack.io/v/NightingaleNath/EasyPreferences.svg)](https://jitpack.io/#NightingaleNath/EasyPreferences)
+
 
 # **EasyPreferences**
 
@@ -31,7 +32,7 @@ Step 2. Add the dependency
 
 ```
 dependencies {
-   implementation 'com.github.NkrumahNath:EasyPreferences:<latest-version>'
+   implementation 'com.github.NightingaleNath:EasyPreferences:<latest-version>'
 }
 ```
 
@@ -146,6 +147,6 @@ That's all. Looks like your all done here.
 
 ## Author
 
-Developed and Maintained by ([Nathaniel Nkrumah](https://github.com/NkrumahNath/EasyPreferences))
+Developed and Maintained by ([Nathaniel Nkrumah](https://github.com/NightingaleNath/EasyPreferences))
 
 
